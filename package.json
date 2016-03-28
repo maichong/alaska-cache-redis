@@ -1,0 +1,27 @@
+{
+  "name": "alaska-cache-redis",
+  "version": "0.2.0",
+  "description": "Alaska redis cache driver",
+  "main": "index.js",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maichong/alaska-cache-redis.git"
+  },
+  "author": {
+    "email": "liang@maichong.it",
+    "name": "liang",
+    "url": "https://github.com/liangxingchen"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/maichong/alaska-cache-redis/issues"
+  },
+  "homepage": "https://github.com/maichong/alaska-cache-redis#readme",
+  "peerDependencies": {
+  },
+  "dependencies": {
+    "redis": "^2.6.0-0"
+  }
+}
