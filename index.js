@@ -10,7 +10,7 @@ const redis = require('redis');
 
 class RedisCacheDriver {
   constructor(options) {
-    this._maxAge = options.maxAge || 86400 * 365 * 10 * 1000;
+    this._maxAge = options.maxAge || 86400 * 365;
     this._driver = redis.createClient(options);
     this.type = 'redis';
     //标识已经是缓存对象实例
@@ -26,8 +26,7 @@ class RedisCacheDriver {
   set(key, value, lifetime) {
     return new Promise((resolve, reject)=> {
       lifetime = lifetime || this._maxAge;
-      console.log('set', key, value, lifetime);
-      this._driver.set(key, value, 'px', lifetime, function (error, res) {
+      this._driver.set(key, JSON.stringify(value), 'EX', lifetime, function (error, res) {
         if (error) {
           reject(error);
         } else {
@@ -43,9 +42,16 @@ class RedisCacheDriver {
         if (error) {
           reject(error);
         } else {
+          if (res !== null) {
+            try {
+              res = JSON.parse(res);
+            } catch (error) {
+              res = null;
+            }
+          }
           resolve(res);
         }
-      })
+      });
     });
   }
 
