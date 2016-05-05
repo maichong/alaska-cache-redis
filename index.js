@@ -24,7 +24,7 @@ class RedisCacheDriver {
   }
 
   set(key, value, lifetime) {
-    return new Promise((resolve, reject)=> {
+    return new Promise((resolve, reject) => {
       lifetime = lifetime || this._maxAge;
       this._driver.set(key, JSON.stringify(value), 'EX', lifetime, function (error, res) {
         if (error) {
@@ -37,7 +37,7 @@ class RedisCacheDriver {
   }
 
   get(key) {
-    return new Promise((resolve, reject)=> {
+    return new Promise((resolve, reject) => {
       this._driver.get(key, function (error, res) {
         if (error) {
           reject(error);
@@ -56,7 +56,7 @@ class RedisCacheDriver {
   }
 
   del(key) {
-    return new Promise((resolve, reject)=> {
+    return new Promise((resolve, reject) => {
       this._driver.del(key, function (error) {
         if (error) {
           reject(error);
@@ -68,7 +68,7 @@ class RedisCacheDriver {
   }
 
   has(key) {
-    return new Promise((resolve, reject)=> {
+    return new Promise((resolve, reject) => {
       this._driver.exists(key, function (error, exists) {
         if (error) {
           reject(error);
@@ -80,7 +80,7 @@ class RedisCacheDriver {
   }
 
   size() {
-    return new Promise((resolve, reject)=> {
+    return new Promise((resolve, reject) => {
       this._driver.dbsize(function (error, size) {
         if (error) {
           reject(error);
@@ -92,7 +92,7 @@ class RedisCacheDriver {
   }
 
   flush() {
-    return new Promise((resolve, reject)=> {
+    return new Promise((resolve, reject) => {
       this._driver.flushdb(function (error, size) {
         if (error) {
           reject(error);

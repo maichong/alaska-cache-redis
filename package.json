@@ -1,7 +1,11 @@
 {
   "name": "alaska-cache-redis",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Alaska redis cache driver",
+  "keywords": [
+    "alaska",
+    "alaska-cache"
+  ],
   "main": "index.js",
   "scripts": {
   },
@@ -22,6 +26,6 @@
   "peerDependencies": {
   },
   "dependencies": {
-    "redis": "^2.6.0-0"
+    "redis": "^2.6.0-2"
   }
 }
