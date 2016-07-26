@@ -9,8 +9,8 @@ cache: {
   type: 'alaska-cache-redis',
   // The connection URI string
   url: 'redis://localhost/0',
-  // default maximum age in seconds
-  maxAge: 3600,
+  // Default maximum age in milliseconds, 0 for forever
+  maxAge: 3600 * 1000,
   //more https://github.com/NodeRedis/node_redis#options-is-an-object-with-the-following-possible-properties
 }
 
