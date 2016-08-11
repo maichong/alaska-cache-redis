@@ -42,7 +42,7 @@ class RedisCacheDriver {
       if (lifetime) {
         args.push('PX', lifetime);
       }
-      args.push(function (error, res) {
+      args.push((error, res) => {
         if (error) {
           reject(error);
         } else {
@@ -60,7 +60,7 @@ class RedisCacheDriver {
    */
   get(key) {
     return new Promise((resolve, reject) => {
-      this._driver.get(key, function (error, res) {
+      this._driver.get(key, (error, res) => {
         if (error) {
           reject(error);
         } else {
@@ -85,7 +85,7 @@ class RedisCacheDriver {
   del(key) {
     debug('del', key);
     return new Promise((resolve, reject) => {
-      this._driver.del(key, function (error) {
+      this._driver.del(key, (error) => {
         if (error) {
           reject(error);
         } else {
@@ -102,7 +102,7 @@ class RedisCacheDriver {
    */
   has(key) {
     return new Promise((resolve, reject) => {
-      this._driver.exists(key, function (error, exists) {
+      this._driver.exists(key, (error, exists) => {
         if (error) {
           reject(error);
         } else {
@@ -120,7 +120,7 @@ class RedisCacheDriver {
    */
   inc(key) {
     return new Promise((resolve, reject) => {
-      this._driver.incr(key, function (error, res) {
+      this._driver.incr(key, (error, res) => {
         if (error) {
           reject(error);
         } else {
@@ -138,7 +138,7 @@ class RedisCacheDriver {
    */
   dec(key) {
     return new Promise((resolve, reject) => {
-      this._driver.decr(key, function (error, res) {
+      this._driver.decr(key, (error, res) => {
         if (error) {
           reject(error);
         } else {
@@ -155,7 +155,7 @@ class RedisCacheDriver {
    */
   size() {
     return new Promise((resolve, reject) => {
-      this._driver.dbsize(function (error, size) {
+      this._driver.dbsize((error, size) => {
         if (error) {
           reject(error);
         } else {
@@ -180,7 +180,7 @@ class RedisCacheDriver {
   flush() {
     debug('flush');
     return new Promise((resolve, reject) => {
-      this._driver.flushdb(function (error, size) {
+      this._driver.flushdb((error, size) => {
         if (error) {
           reject(error);
         } else {
